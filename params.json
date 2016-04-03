@@ -1,6 +1,6 @@
 {
-  "name": "Web-performance-workshop",
-  "tagline": "Web Performance Workshop for JSConf 2016",
-  "body": "# Web Performance Workshop\r\n\r\nWeb Performance Workshop for [JSConf 2016](https://jsconf.uy). Link to workshop [here](https://jsconf.uy/schedule#performance-testing-and-optimization)\r\n\r\n## Agenda\r\n\r\n### Minimize the amount of bytes being sent to the client\r\n\r\n- Step 1: Optimize images\r\n  - Resize and compress\r\n  - Responsive images / Imager.js\r\n- Step 2: Optimize CSS\r\n  - Minify, compress and cache CSS\r\n  - Remove unused styles\r\n\r\n### Reduce critical resources\r\n\r\n- Step 3: Use media queries on to unblock rendering (mobile)\r\n- Step 4: Inlining CSS and JS\r\n- Step 5: Compress and unify fonts (https://github.com/typekit/webfontloader)\r\n\r\n\r\n### Shorten the Critical Rendering Path length\r\n\r\n- Step 6: Async/Defer JavaScript\r\n- Step 7: Code optimizations \r\n- Step 8: Service workers\r\n",
+  "name": "Web Performance Workshop",
+  "tagline": "by Diego Cardozo @ JSConfUY 2016",
+  "body": "## Agenda\r\n\r\n### Minimize the amount of bytes being sent to the client\r\n\r\n- Step 1: Optimize images\r\n  - Resize and compress\r\n  - Responsive images / Imager.js\r\n- Step 2: Optimize CSS\r\n  - Minify, compress and cache CSS\r\n  - Remove unused styles\r\n\r\n### Reduce critical resources\r\n\r\n- Step 3: Use media queries on to unblock rendering (mobile)\r\n- Step 4: Inlining CSS and JS\r\n- Step 5: Compress and unify fonts (https://github.com/typekit/webfontloader)\r\n\r\n\r\n### Shorten the Critical Rendering Path length\r\n\r\n- Step 6: Async/Defer JavaScript\r\n- Step 7: Code optimizations \r\n- Step 8: Service workers\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
