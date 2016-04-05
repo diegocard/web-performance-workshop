@@ -90,18 +90,22 @@ new Imager({
             <h3>Native responsive images</h3>
             <p>We can take things one step further by using native responsive images. However, not all browsers support them.</p>
             
-            <img src="images/step1/image-large.jpg"
-                alt="Native responsive image of a cat"
-                srcset="images/step1/image-large.jpg 1200w,
-                        images/step1/image-medium.jpg 992w,
-                        images/step1/image-small.jpg 768w">
-<pre><code class="language-markup">
-&lt;img src="images/step1/image-large.jpg"
-    alt="Native responsive image of a cat"
-    srcset="images/step1/image-large.jpg 1200w,
-            images/step1/image-medium.jpg 992w,
-            images/step1/image-small.jpg 768w">
-</code></pre>
+            <picture>
+                <source
+                    media="(max-width: 800px)"
+                    srcset="https://jakearchibald.com/static/posts/responsive-images/f1-focused-800.867f0b0b832f.jpg 800w,
+                            https://jakearchibald.com/static/posts/responsive-images/f1-focused-1406.jpg 1406w"
+                    sizes="(min-width: 530px) calc(100vw - 96px), 100vw">
+                <img
+                    style="width:100%"
+                    alt="F1 car in the gravel"
+                    src="https://jakearchibald.com/static/posts/responsive-images/f1-689.d6ed1b428a74.jpg"
+                    srcset="https://jakearchibald.com/static/posts/responsive-images/f1-689.d6ed1b428a74.jpg 689w,
+                            https://jakearchibald.com/static/posts/responsive-images/f1-1378.jpg 1378w,
+                            https://jakearchibald.com/static/posts/responsive-images/f1-500.jpg 500w,
+                            https://jakearchibald.com/static/posts/responsive-images/f1-1000.jpg 1000w"
+                    sizes="(min-width: 1066px) 689px, calc(75vw - 137px)">
+            </picture>
 
             <table>
                 <tr>
@@ -131,25 +135,7 @@ new Imager({
                     <td>49+</td>
                     <td>13+</td>
                 </tr>
-            </table>
-
-            <h3>Other tricks with responsive images</h3>
-            <picture>
-                <source
-                    media="(max-width: 800px)"
-                    srcset="https://jakearchibald.com/static/posts/responsive-images/f1-focused-800.867f0b0b832f.jpg 800w,
-                            https://jakearchibald.com/static/posts/responsive-images/f1-focused-1406.jpg 1406w"
-                    sizes="(min-width: 530px) calc(100vw - 96px), 100vw">
-                <img
-                    style="width:100%"
-                    alt="F1 car in the gravel"
-                    src="https://jakearchibald.com/static/posts/responsive-images/f1-689.d6ed1b428a74.jpg"
-                    srcset="https://jakearchibald.com/static/posts/responsive-images/f1-689.d6ed1b428a74.jpg 689w,
-                            https://jakearchibald.com/static/posts/responsive-images/f1-1378.jpg 1378w,
-                            https://jakearchibald.com/static/posts/responsive-images/f1-500.jpg 500w,
-                            https://jakearchibald.com/static/posts/responsive-images/f1-1000.jpg 1000w"
-                    sizes="(min-width: 1066px) 689px, calc(75vw - 137px)">
-            </picture>
+            </table>            
             
             <p>More on responsive images <a href="https://jakearchibald.com/2015/anatomy-of-responsive-images/">here</a></p>
         </section>
