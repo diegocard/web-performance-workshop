@@ -8,8 +8,10 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
     <script src="javascripts/scale.fix.js"></script>
     <script src="javascripts/Imager.min.js"></script>
+    <script src="javascripts/prism.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
@@ -36,16 +38,29 @@
             </h2>
 
             <h3>Original image (1 MB)</h3>
-            <img src="images/image-original.jpg" alt="Huge image of a cat">
+            <img src="images/step1/image-original.jpg" alt="Huge image of a cat">
+            <p>Let's start by resizing this image so that it fits the container.</p>
+            <ul>
+                <li>Identify the correct measurements using the browser's Dev Tools</li>
+                <li>Resize your image accordingly using any image editing tools or a service such as <a href="http://picresize.com/">picresize.com</a></li>
+            </ul>
 
             <h3>Resized (385 KB)</h3>
-            <img src="images/image-resized.jpg" alt="Resized image of a cat">
+            <img src="images/step1/image-resized.jpg" alt="Resized image of a cat">
+            <p>Now that the image is sized correctly, let's pass it through an image compressing service such as <a href="https://tinypng.com/">tinypng.com</a></p>
 
             <h3>Compressed (53 KB)</h3>
-            <img src="images/image-compressed.jpg" alt="Compressed image of a cat">
+            <img src="images/step1/image-compressed.jpg" alt="Compressed image of a cat">
+            <p>
+                This is as far as we can go by using a single, static image. However, users with smaller devices such as smart phones will end up downloading
+                an image that is bigger than their screen. Luckily we have some extra tricks up our sleeve. Enter the concept of responsive images.
+            </p>
 
             <h3>Imager.js (depends on screen size)</h3>
-            <div class="delayed-image-load" data-src="images/image-{width}.jpg" data-alt="Image of a cat, loaded by Imager.js"></div>
+            <div class="delayed-image-load"
+                 data-src="images/step1/image-{width}.jpg"
+                 data-alt="Image of a cat, loaded by Imager.js">
+            </div>            
             <script>
                 new Imager({
                     availableWidths: {
@@ -55,9 +70,70 @@
                     }
                 });
             </script>
+<pre><code class="language-markup">
+&lt;div class="delayed-image-load"
+     data-src="images/step1/image-{width}.jpg"
+     data-alt="Image of a cat, loaded by Imager.js">
+&lt;/div>
+</code></pre>
+<pre><code class="language-javascript">
+new Imager({
+    availableWidths: {
+        768: 'small',
+        992: 'medium',
+        1200: 'large'
+    }
+});
+</code></pre>
             <p>Note: Breakpoints taken from Bootstrap's <a href="http://getbootstrap.com/css/#grid-options">grid options</a></p>
 
             <h3>Native responsive images</h3>
+            <p>We can take things one step further by using native responsive images. However, not all browsers support them.</p>
+            
+            <img src="images/step1/image-large.jpg"
+                alt="Native responsive image of a cat"
+                srcset="images/step1/image-large.jpg 1200w,
+                        images/step1/image-medium.jpg 992w,
+                        images/step1/image-small.jpg 768w">
+<pre><code class="language-markup">
+&lt;img src="images/step1/image-large.jpg"
+    alt="Native responsive image of a cat"
+    srcset="images/step1/image-large.jpg 1200w,
+            images/step1/image-medium.jpg 992w,
+            images/step1/image-small.jpg 768w">
+</code></pre>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Chrome</th>
+                    <th>Firefox</th>
+                    <th>Safari</th>
+                    <th>iOS Safari</th>
+                    <th>Android Chrome</th>
+                    <th>Edge</th>
+                </tr>
+                <tr>
+                    <th>picture</th>
+                    <td>47+</td>
+                    <td>44+</td>
+                    <td>9.1+</td>
+                    <td>9.3+</td>
+                    <td>49+</td>
+                    <td>13+</td>
+                </tr>
+                <tr>
+                    <th>srcset</th>
+                    <td>47+</td>
+                    <td>44+</td>
+                    <td>9+</td>
+                    <td>9.2+</td>
+                    <td>49+</td>
+                    <td>13+</td>
+                </tr>
+            </table>
+
+            <h3>Other tricks with responsive images</h3>
             <picture>
                 <source
                     media="(max-width: 800px)"
