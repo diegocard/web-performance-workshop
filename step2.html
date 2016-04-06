@@ -8,7 +8,9 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
     <script src="javascripts/scale.fix.js"></script>
+    <script src="javascripts/prism.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
@@ -35,14 +37,35 @@
             <p>One JavaScript file and one CSS file are not currently minified in this page.</p>
             
             <ol>
-                <li>Find them!</li>
-                <li>Minify them using <a href="http://jscompressor.com/">jscompressor.com</a></li>
-                <li>Replace them with minified versions and re-run the diagnosis tools</li>
+                <li>Find them using <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></li>
+                <li>Minify them using <a href="http://refresh-sf.com/">refresh-sf.com</a></li>
+                <li>Alternatively, run the gulp task that compresses the JS and CSS</li>
             </ol>
             
             <h3>Compress CSS and JS</h3>
+                <p>Launch the local server by running gulp and open http://localhost:8080/step2.html</p>
+<pre><code class="language-bash">
+> npm install
+> gulp
+
+[21:41:55] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
+[21:41:55] Starting 'connect'...
+[21:41:55] Finished 'connect' after 16 ms
+[21:41:55] Starting 'default'...
+[21:41:55] Finished 'default' after 7.11 μs
+[21:41:55] Server started http://localhost:8080
+</code></pre>
+            <ul>
+                <li>Open the audit tab on Chrome's Dev Tools and run a performance audit against this page.</li>
+                <li>Run the same audit against the live version of the site <a href="http://diegocard.github.io/Web-Performance-Workshop/step2.html">here</a></li>
+                <li>Why is compression not present locally? Comment on <code>Content-Encoding:gzip</code></li>
+                <li>You can also check for resources that are missing compression using <a href="http://gzipwtf.com/">gzipwtf.com</a></li>
+            </ul>
             
             <h3>Cache CSS and JS</h3>
+            <ul>
+                <li>Comment on response headers to check for c</li>
+            </ul>
             
             <h3>Remove unused styles</h3>
         </section>

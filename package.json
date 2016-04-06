@@ -1,0 +1,26 @@
+{
+  "name": "web-performance-workshop",
+  "version": "1.0.0",
+  "description": "Web performance workshop for JSConfUY 2016",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegocard/Web-Performance-Workshop.git"
+  },
+  "keywords": [
+    "Performance"
+  ],
+  "author": "Diego Cardozo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegocard/Web-Performance-Workshop/issues"
+  },
+  "homepage": "https://github.com/diegocard/Web-Performance-Workshop#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.2"
+  }
+}
