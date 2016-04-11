@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
   connect = require('gulp-connect');
 
-gulp.task('connect', function() {
+gulp.task('local', function() {
   connect.server();
 });
 
-gulp.task('default', ['connect']);
+gulp.task('default', ['local']);
