@@ -51,80 +51,13 @@
         </header>
         <section>
             <h2>
-                <a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-                Getting started
+                <a id="unblock-rendering" class="anchor" href="#unblock-rendering" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+                Unblock rendering
             </h2>
-                <p>Launch the local server by running gulp and open <a href="http://localhost:8080">http://localhost:8080</a></p>
-<pre><code class="language-bash">
-> npm install
-> gulp
-
-[21:41:55] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
-[21:41:55] Starting 'connect'...
-[21:41:55] Finished 'connect' after 16 ms
-[21:41:55] Starting 'default'...
-[21:41:55] Finished 'default' after 7.11 μs
-[21:41:55] Server started http://localhost:8080
-</code></pre>
+            <h3>Goal: progressive rendering</h3>
+            <img src="images/step3/progressive-rendering.png" alt="Progressive rendering">
             
-            <h2>
-                <a id="agenda" class="anchor" href="#agenda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-                Agenda
-            </h2>
-
-            <h3>
-                <a id="minimize-the-amount-of-bytes-being-sent-to-the-client" class="anchor" href="#minimize-the-amount-of-bytes-being-sent-to-the-client" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-                Minimize the amount of bytes being sent to the client
-            </h3>
-
-            <ul>
-                <li><a href="step1.html">Step 1: Optimize images</a>
-
-                    <ul>
-                        <li>Resize and compress</li>
-                        <li>Responsive images / Imager.js</li>
-                    </ul>
-                </li>
-                <li><a href="step2.html">Step 2: Optimize static assets</a>
-
-                    <ul>
-                        <li>Minify CSS and JS</li>
-                        <li>Compress CSS and JS</li>
-                        <li>Cache CSS and JS</li>
-                        <li>Remove unused styles</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3>
-                <a id="reduce-critical-resources" class="anchor" href="#reduce-critical-resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-                Reduce critical resources
-            </h3>
-
-            <ul>
-                <li><a href="step3.html">Step 3: Unblock rendering</a></li>
-                <ul>
-                    <li>Use media queries on link tags</li>
-                    <li>Inline JS</li>
-                    <li>Inline CSS</li>
-                </ul>
-                <li>Step 4: Fonts</li>
-                <ul>
-                    <li>Compress and unify fonts (<a href="https://github.com/typekit/webfontloader">https://github.com/typekit/webfontloader)</a></li>
-                </ul>
-            </ul>
-
-            <h3>
-                <a id="shorten-the-critical-rendering-path-length" class="anchor" href="#shorten-the-critical-rendering-path-length" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
-                Shorten the Critical Rendering Path length
-            </h3>
-
-            <ul>
-                <li>Step 6: Async/Defer JavaScript</li>
-                <li>Step 7: Code optimizations </li>
-                <li>Step 8: Service workers</li>
-                <li>Step 9: Content Delivery Network</li>
-            </ul>
+            <h3>Critical Rendering Path</h3>
         </section>
     </div>
     <footer>
