@@ -61,13 +61,15 @@
                  data-alt="Image of a cat, loaded by Imager.js">
             </div>            
             <script>
-                new Imager({
-                    availableWidths: {
-                        768: 'small',
-                        992: 'medium',
-                        1200: 'large'
-                    }
-                });
+                if (typeof Imager !== 'undefined') {
+                    new Imager({
+                        availableWidths: {
+                            768: 'small',
+                            992: 'medium',
+                            1200: 'large'
+                        }
+                    });
+                }
             </script>
 <pre><code class="language-markup">
 &lt;div class="delayed-image-load"

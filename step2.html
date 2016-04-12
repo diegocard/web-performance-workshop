@@ -43,13 +43,13 @@
 <pre><code class="language-bash">
 > gulp minify
 
-[16:10:04] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
-[16:10:04] Starting 'styles'...
-[16:10:04] Starting 'scripts'...
-[16:10:07] Finished 'scripts' after 2.85 s
-[16:10:08] Finished 'styles' after 3.86 s
-[16:10:08] Starting 'minify'...
-[16:10:08] Finished 'minify' after 19 μs
+[01:17:26] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
+[01:17:26] Starting 'minify-styles'...
+[01:17:26] Starting 'minify-scripts'...
+[01:17:26] Finished 'minify-scripts' after 272 ms
+[01:17:27] Finished 'minify-styles' after 1.27 s
+[01:17:27] Starting 'minify'...
+[01:17:27] Finished 'minify' after 13 μs
 </code></pre>
             
             <h3>Compress CSS and JS</h3>
@@ -62,10 +62,45 @@
             
             <h3>Cache CSS and JS</h3>
             <ul>
-                <li>Comment on response headers to check for c</li>
+                <li>Open Chrome's dev tools, go to the Network tab and look at the response headers on the jQuery JS request</li>
+                <li>Cache-Control: determines who can cache the response, under which conditions, and for how long (in seconds)</li>
+                <ul>
+                    <li>no-cache: always makes a round trip, but download can be prevented with etags</li>
+                    <li>no-store: completely disallows cache</li>
+                    <li>public: can be cached by anyone</li>
+                    <li>private: can be cached by the browser, but not others (not on CDN for example)</li>
+                </ul>
+                <li>Etag: after the cache expires, if the fingerprint (etag) is still the same then the resource has not changed and we can skip the download</li>
+                <li>More info <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#">here</a></li>
             </ul>
             
+            <h4>Cache Control Example</h4>
+            <p>
+                In this example exchange the server returns a 1024 byte response, instructs the client to cache it for up to 120 seconds,
+                and provides a validation token (“x234dff”).
+            </p>
+            <p>
+                The second request is sent after the cache has expired. However, using etags we can detect that the content has not changed and
+                prevent a download. 
+            </p>
+                
+            <img src="images/step2/http-request.png" alt="HTTP request">
+            
             <h3>Remove unused styles</h3>
+            <ul>
+                <li>Again, open the audit tab on Chrome's Dev Tools and run a performance audit against this page. Check for unused CSS</li>
+                <li>You'll be able to see which rules are currently not being used by the page.</li>
+                <li><a href="https://unused-css.com">unused-css.com</a> is a paid service that does this for you.</li>
+                <li>Our you can use the gulp task below</li>
+            </ul>
+            
+<pre><code class="language-bash">
+> gulp unused-css
+
+[01:43:03] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
+[01:43:03] Starting 'unused-css'...
+[01:43:04] Finished 'unused-css' after 1.49 s
+</code></pre> 
         </section>
     </div>
     <footer>
@@ -73,8 +108,8 @@
         <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    <script src="javascripts/jquery-1.12.3.js"></script>
-    <script src="javascripts/prism.js" defer></script>
+    <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="javascripts/prism.js"></script>
 </body>
 
 </html>
