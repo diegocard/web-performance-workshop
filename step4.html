@@ -65,21 +65,33 @@
             </ul>
 
             <h3>Font formats</h3>
-            <ul>
-                <li>EOT is IE only. Not compressed</li>
-                <li>TTF has partial IE support. Not compressed</li>
-                <li>WOFF enjoys widest support but is not available in some older browsers. Has compression</li>
-                <li>WOFF 2.0 support is a work in progress for many browsers. Has custom preprocessing and compression. ~30% size reduction over other formats.</li>
-            </ul>
-            
-            <h3>Initial recommendations</h3>
-            <ol>
-                <li>Measure font downloads using Chrome Dev tools</li>
-                <li>Remove the @import request on styles.css</li>
-                <li>Don't include fonts or subsets of fonts you don't use</li>
-                <li>Fonts can be 64-encoded and inlined into CSS stylesheets. This is not always recommended</li>
-            </ol>
-           
+            <table>
+                <tr>
+                    <th>Format</th>
+                    <th>Browser support</th>
+                    <th>Compression</th>
+                </tr>
+                <tr>
+                    <td>EOT</td>
+                    <td>IE only</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>TTF</td>
+                    <td>Partial IE support</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>WOFF</td>
+                    <td>Widest support</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>WOFF 2.0</td>
+                    <td>Modern browsers</td>
+                    <td>~30% less size and preprocessing</td>
+                </tr>
+            </table>
            
             <h3>@font-face</h2>
 <pre><code class="language-css">
@@ -109,6 +121,15 @@
     unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
 }
 </code></pre>
+            
+            <h3>Initial recommendations</h3>
+            <ol>
+                <li>Measure font downloads using Chrome Dev tools</li>
+                <li>Remove the @import request on styles.css</li>
+                <li>Don't include fonts or subsets of fonts you don't use</li>
+                <li>Fonts can be 64-encoded and inlined into CSS stylesheets. This is not always recommended</li>
+            </ol>
+           
 
             <h3>Google fonts</h3>
             <p>
