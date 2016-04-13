@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/diegocard/Web-Performance-Workshop#readme",
   "devDependencies": {
+    "critical": "^0.7.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",

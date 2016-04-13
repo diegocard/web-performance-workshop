@@ -58,6 +58,63 @@
             <img src="images/step3/progressive-rendering.png" alt="Progressive rendering">
             
             <h3>Critical Rendering Path</h3>
+            <p>The Critical Rendering Path contains follows these steps (in order):</p>
+            <ol>
+                <li>Parse the HTML and construct the DOM</li>
+                <li>Fetch the CSS and construct the CSSOM</li>
+                <li>Combine the DOM and CSSOM to create the render tree</li>
+                <li>On the layout step elements are positioned on the page taking viewport size into account</li>
+                <li>Finally, there’s the paint step</li>
+            </ol>
+            <h4>Important notes</h4>
+            <ul>
+                <li>Building the CSSOM blocks JavaScript execution</li>
+                <li>The render tree contains DOM attribues and CSS information for visible elements of the DOM only</li>
+            </ul>
+            
+            <h3>Debugging the timeline</h3>
+            <ul>
+                <li>Open the timeline tab on Chrome dev tools and run an analysis on <a href="https://jsconf.uy/">https://jsconf.uy/</a></li>
+                <li>How much time is spent loading, scripting, rendering and painting?</li>
+                <li>Which was the slowest script to evaluate and execute?</li>
+            </ul>
+            
+            <h3>Use media queries on link tags</h3>
+            <p>By default CSS is treated as a render blocking resource, which means that the browser will hold rendering of any processed content until the CSSOM is constructed</p>
+            <ul>
+                <li>Media types and media queries allow us to mark some CSS resources as non-render blocking</li>
+                <li>All CSS resources, regardless of blocking or non-blocking behavior, are downloaded by the browser</li>
+                <li>When are the following stylesheets render blocking?</li>
+            </ul>
+          
+<pre><code class="language-markup">
+&lt;link href="style.css" rel="stylesheet">
+&lt;link href="print.css" rel="stylesheet" media="print">
+&lt;link href="other.css" rel="stylesheet" media="(min-width: 40em)">
+&lt;link href="portrait.css" rel="stylesheet" media="orientation:portrait">
+</code></pre>
+            
+            <h3>Inline CSS</h3>
+            <ul>
+                <li>The browser will delay script execution until it has finished downloading and constructing the CSSOM</li>
+                <li>And while we’re waiting, the DOM construction is also blocked</li>
+                <li>TWe want to have the critical portions of CSS available as soon as possible. That is why sometimes it is a good idea to inline above the fold CSS</li>
+                <li>Run <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed insights</a>. Which CSS should be inlined?</li>
+                <li>The following gulp task does the inlining for you.</li>
+            </ul>
+<pre><code class="language-bash">
+> gulp inline-css
+
+[00:41:51] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
+[00:41:51] Starting 'inline-css'...
+[00:42:12] Finished 'inline-css' after 20 s
+</code></pre>
+            
+            <h3>Inline JS</h3>
+            <p>By default, JavaScript execution is parser blocking</p>
+            <p>When the browser encounters a script in the document it must pause DOM construction, hand over the control to the JavaScript runtime and let the script execute before proceeding with DOM construction</p>
+            <p>Just like before, sometimes we want to inline critical JavaScript to prevent roundtrips</p>
+            
         </section>
     </div>
     <footer>
