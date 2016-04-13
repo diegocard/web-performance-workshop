@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Web Performance Workshop by Diego Cardozo.">
+    <meta name="geo.region" content="UY">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/meta/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Web Performance Workshop by @diecard</title>
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/meta/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/meta/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/meta/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/meta/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/meta/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/meta/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/meta/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/meta/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/meta/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/meta/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/meta/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/meta/favicon-16x16.png">
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
+    <script src="javascripts/scale.fix.js"></script>    
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1><a href="index.html">Web Performance Workshop</a></h1>
+            <p>by <a href="https://github.com/diegocard">Diego Cardozo</a> @ <a href="https://jsconf.uy/">JSConfUY 2016</a></p>
+            <p class="view"><a href="https://github.com/diegocard/Web-Performance-Workshop">View the Project on GitHub <small>diegocard/Web-Performance-Workshop</small></a></p>
+            <ul>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop/zipball/gh-pages">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop/tarball/gh-pages">Download <strong>TAR Ball</strong></a></li>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop">View On <strong>GitHub</strong></a></li>
+            </ul>
+        </header>
+        <section>
+            <h2>
+                <a id="fonts" class="anchor" href="#fonts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+                Fonts
+            </h2>
+            
+            <h3>Rendering process</h3>
+            <ul>
+                <li>Font requests are delayed until the render tree is constructed, which can result in delayed text rendering</li>
+                <li>If fonts are requested asynchronously, there is a potential race between first paint and the font request</li>
+                <li>Different browsers resolve this race condition in different ways</li>
+                <li>Ultimately you want to decide if you want re-rendering or not</li>
+                <li>Fonts are cachable by browsers (Cache-Control, etc)</li>
+            </ul>
+
+            <h3>Font formats</h3>
+            <ul>
+                <li>EOT is IE only. Not compressed</li>
+                <li>TTF has partial IE support. Not compressed</li>
+                <li>WOFF enjoys widest support but is not available in some older browsers. Has compression</li>
+                <li>WOFF 2.0 support is a work in progress for many browsers. Has custom preprocessing and compression. ~30% size reduction over other formats.</li>
+            </ul>
+            
+            <h3>Initial recommendations</h3>
+            <ol>
+                <li>Measure font downloads using Chrome Dev tools</li>
+                <li>Remove the @import request on styles.css</li>
+                <li>Don't include fonts or subsets of fonts you don't use</li>
+                <li>Fonts can be 64-encoded and inlined into CSS stylesheets. This is not always recommended</li>
+            </ol>
+           
+           
+            <h3>@font-face</h2>
+<pre><code class="language-css">
+@font-face {
+    font-family: 'Awesome Font';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Awesome Font'),
+        url('/fonts/awesome-l.woff2') format('woff2'), 
+        url('/fonts/awesome-l.woff') format('woff'),
+        url('/fonts/awesome-l.ttf') format('ttf'),
+        url('/fonts/awesome-l.eot') format('eot');
+    /* Optional, not always useful */
+    unicode-range: U+000-5FF; /* Latin glyphs */
+}
+
+@font-face {
+    font-family: 'Awesome Font';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Awesome Font'),
+        url('/fonts/awesome-jp.woff2') format('woff2'), 
+        url('/fonts/awesome-jp.woff') format('woff'),
+        url('/fonts/awesome-jp.ttf') format('ttf'),
+        url('/fonts/awesome-jp.eot') format('eot');
+    /* Optional, not always useful */
+    unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
+}
+</code></pre>
+
+            <h3>Google fonts</h3>
+            <p>
+                Let's go into <a href="https://www.google.com/fonts">Google Fonts</a> and construct the same font used in this site
+                <ul>
+                    <li>Lato normal, thickness 400 and 700</li>
+                    <li>Lato italic, thickness 400 and 700</li>
+                </ul>
+            </p>
+            <p>We get something like this:</p>
+<pre><code class="language-markup">
+&lt;link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic'
+    rel='stylesheet'
+    type='text/css'>
+</code></pre>
+            <p>
+                A common error is to simply use an @import statement as in this page's <a href="stylesheets/styles.css" target="_blank">styles.css</a>.
+                Replace this to prevent and additional roundtrip.
+            </p>
+            
+            <h3>Webfontloader</h3>
+            <p>
+                Webfontloader is a 13kb library from Adobe and Google that implements the <a href="http://dev.w3.org/csswg/css-font-loading/">Font Loading API</a>.
+                It includes utilities such as:
+            </p>
+            <ul>
+                <li>Common interface to loading fonts regardless of the source (Google Fonts, Typekit), etc</li>
+                <li>The webfontloader applies class names to the html element during operation
+                    <ul>
+                        <li>.wf-loading — all fonts have been requested</li>
+                        <li>.wf-active — all fonts are available</li>
+                        <li>.wf-inactive — none of the fonts could be loaded</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>In the example below we'll load a font asynchronously and replace it when available.</p>
+            
+<pre><code class="language-javascript">
+var WebFontConfig = {
+	google: {
+		families: ['Lato:400,700,400italic,700italic']
+	},
+	timeout: 2000
+};
+
+(function(){
+	var wf = document.createElement("script");
+	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	wf.async = 'true';
+	document.head.appendChild(wf);
+})();
+</code></pre>
+<pre><code class="language-css">
+/* default OS fonts */
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* fonts now loaded */
+.wf-active body {
+	font-family: Lato;
+}
+</code></pre>        
+        </section>
+    </div>
+    <footer>
+        <p>Project maintained by <a href="https://github.com/diegocard">diegocard</a></p>
+        <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->    
+    <script src="javascripts/prism.js" defer></script>
+</body>
+
+</html>
