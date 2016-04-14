@@ -1,0 +1,100 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Web Performance Workshop by Diego Cardozo.">
+    <meta name="geo.region" content="UY">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/meta/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Web Performance Workshop by @diecard</title>
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/meta/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/meta/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/meta/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/meta/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/meta/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/meta/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/meta/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/meta/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/meta/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/meta/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/meta/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/meta/favicon-16x16.png">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <link rel="stylesheet" href="stylesheets/prism.css">
+    <script src="javascripts/scale.fix.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1><a href="index.html">Web Performance Workshop</a></h1>
+            <p>by <a href="https://github.com/diegocard">Diego Cardozo</a> @ <a href="https://jsconf.uy/">JSConfUY 2016</a></p>
+            <p class="view"><a href="https://github.com/diegocard/Web-Performance-Workshop">View the Project on GitHub <small>diegocard/Web-Performance-Workshop</small></a></p>
+            <ul>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop/zipball/gh-pages">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop/tarball/gh-pages">Download <strong>TAR Ball</strong></a></li>
+                <li><a href="https://github.com/diegocard/Web-Performance-Workshop">View On <strong>GitHub</strong></a></li>
+            </ul>
+        </header>
+        <section>
+            <h2>
+                <a id="async-defer-javascript" class="anchor" href="#async-defer-javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+                Async/Defer JavaScript
+            </h2>
+
+            <h3>script</h3>
+            <img src="images/step5/script.svg" alt="Script with no attributes">
+            <ul>
+                <li>The HTML file will be parsed until the script file is hit</li>
+                <li>At that point parsing will stop and a request will be made to fetch the file (if it’s external)</li>
+                <li>The script will then be executed before parsing is resumed</li>
+                <li>Comment on preload scanner</li>
+            </ul>
+
+            <h3>async</h3>
+            <img src="images/step5/script-async.svg" alt="Script with async attribute">
+            <ul>
+                <li>Downloads the file during HTML parsing</li>
+                <li>Execution does not block DOM or CSSOM construction</li>
+            </ul>
+
+            <h3>defer</h3>
+            <img src="images/step5/script-defer.svg" alt="Script with defer attribute">
+            <ul>
+                <li>Downloads the file during HTML parsing </li>
+                <li>Will only execute the script after the parser has completed</li>
+                <li>Defer scripts are also guarenteed to execute in the order that they appear in the document</li>
+            </ul>
+
+            <h3>Example: prism.js</h3>
+<pre><code class="language-bash">
+&lt;script src="javascripts/prism.js" defer></script>
+&lt;script src="javascripts/analytics.js" async></script>
+</code></pre>
+
+            <p>Main resource: <a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">here</a></p>
+        </section>
+    </div>
+    <footer>
+        <p>Project maintained by <a href="https://github.com/diegocard">diegocard</a></p>
+        <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/prism.js" defer></script>
+</body>
+
+</html>

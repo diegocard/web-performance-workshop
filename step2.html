@@ -51,10 +51,10 @@
         </header>
         <section>
             <h2>Optimize Resources</h2>
-                        
+
             <h3>Minify CSS and JS</h3>
             <p>One JavaScript file and one CSS file are not currently minified in this page.</p>
-            
+
             <ol>
                 <li>Find them using <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></li>
                 <li>Minify them using <a href="http://refresh-sf.com/">refresh-sf.com</a></li>
@@ -71,15 +71,15 @@
 [01:17:27] Starting 'minify'...
 [01:17:27] Finished 'minify' after 13 μs
 </code></pre>
-            
+
             <h3>Compress CSS and JS</h3>
             <ul>
                 <li>Open the audit tab on Chrome's Dev Tools and run a performance audit against this page.</li>
-                <li>Run the same audit against the live version of the site <a href="http://diegocard.github.io/Web-Performance-Workshop/step2.html">here</a></li>
+                <li>Run the same audit against the live version of the site <a href="http://www.diegocard.com/Web-Performance-Workshop/step2.html">here</a></li>
                 <li>Why is compression not present locally? Comment on <code>Content-Encoding:gzip</code></li>
                 <li>You can also check for resources that are missing compression using <a href="http://gzipwtf.com/">gzipwtf.com</a></li>
             </ul>
-            
+
             <h3>Cache CSS and JS</h3>
             <ul>
                 <li>Open Chrome's dev tools, go to the Network tab and look at the response headers on the jQuery JS request</li>
@@ -93,7 +93,7 @@
                 <li>Etag: after the cache expires, if the fingerprint (etag) is still the same then the resource has not changed and we can skip the download</li>
                 <li>More info <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#">here</a></li>
             </ul>
-            
+
             <h4>Cache Control Example</h4>
             <p>
                 In this example exchange the server returns a 1024 byte response, instructs the client to cache it for up to 120 seconds,
@@ -101,11 +101,11 @@
             </p>
             <p>
                 The second request is sent after the cache has expired. However, using etags we can detect that the content has not changed and
-                prevent a download. 
+                prevent a download.
             </p>
-                
+
             <img src="images/step2/http-request.png" alt="HTTP request">
-            
+
             <h3>Remove unused styles</h3>
             <ul>
                 <li>Again, open the audit tab on Chrome's Dev Tools and run a performance audit against this page. Check for unused CSS</li>
@@ -113,14 +113,14 @@
                 <li><a href="https://unused-css.com">unused-css.com</a> is a paid service that does this for you.</li>
                 <li>Our you can use the gulp task below</li>
             </ul>
-            
+
 <pre><code class="language-bash">
 > gulp unused-css
 
 [01:43:03] Using gulpfile ~\Documents\GitHub\Web-Performance-Workshop\gulpfile.js
 [01:43:03] Starting 'unused-css'...
 [01:43:04] Finished 'unused-css' after 1.49 s
-</code></pre> 
+</code></pre>
         </section>
     </div>
     <footer>

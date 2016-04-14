@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/meta/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/meta/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/meta/favicon-16x16.png">
-    
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-dark.css">
     <link rel="stylesheet" href="stylesheets/prism.css">
@@ -60,7 +60,7 @@
             <img src="images/step1/image-original.jpg" alt="Huge image of a cat">
             <p>Let's start by resizing this image so that it fits the container.</p>
             <ul>
-                <li>Identify the correct measurements using the browser's Dev Tools</li>
+                <li>Identify the correct measurements using the browser's Dev Tools or <a href="https://pageweight.imgix.com/">pageweight.imgix.com</a></li>
                 <li>Resize your image accordingly using any image editing tools or a service such as <a href="http://picresize.com/">picresize.com</a></li>
             </ul>
 
@@ -79,7 +79,7 @@
             <div class="delayed-image-load"
                  data-src="images/step1/image-{width}.jpg"
                  data-alt="Image of a cat, loaded by Imager.js">
-            </div>            
+            </div>
             <script>
                 if (typeof Imager !== 'undefined') {
                     new Imager({
@@ -110,7 +110,7 @@ new Imager({
 
             <h3>Native responsive images</h3>
             <p>We can take things one step further by using native responsive images. However, not all browsers support them.</p>
-            
+
             <picture>
                 <source
                     media="(max-width: 800px)"
@@ -156,8 +156,8 @@ new Imager({
                     <td>49+</td>
                     <td>13+</td>
                 </tr>
-            </table>            
-            
+            </table>
+
             <p>More on responsive images <a href="https://jakearchibald.com/2015/anatomy-of-responsive-images/">here</a></p>
         </section>
     </div>
