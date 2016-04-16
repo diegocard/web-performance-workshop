@@ -6,22 +6,36 @@ Web Performance Workshop for [JSConf 2016](https://jsconf.uy). Link to workshop 
 
 ### Minimize the amount of bytes being sent to the client
 
-- Step 1: Optimize images
+- [Step 1: Optimize images](http://www.diegocard.com/web-performance-workshop/step1.html)
   - Resize and compress
   - Responsive images / Imager.js
-- Step 2: Optimize CSS
-  - Minify, compress and cache CSS
+
+- [Step 2: Optimize static assets](http://www.diegocard.com/web-performance-workshop/step2.html)
+  - Minify CSS and JS
+  - Compress CSS and JS
+  - Cache CSS and JS
   - Remove unused styles
+  - Reduce critical resources
 
-### Reduce critical resources
+- [Step 3: Unblock rendering](http://www.diegocard.com/web-performance-workshop/step3.html)
+  -  Critical Rendering Path
+  -  Debugging the timeline
+  -  Use media queries on link tags
+  -  Inline JS
+  -  Inline CSS
 
-- Step 3: Use media queries on to unblock rendering (mobile)
-- Step 4: Inlining CSS and JS
-- Step 5: Compress and unify fonts (https://github.com/typekit/webfontloader)
+- [Step 4: Fonts](http://www.diegocard.com/web-performance-workshop/step4.html)
+  - Rendering
+  - Font formats
+  - @font-face
+  - Initial recommendations
+  - Google fonts
+  - Webfontloader
+  - Shorten the Critical Rendering Path length
 
+- Step 5: [Async/Defer JavaScript](http://www.diegocard.com/web-performance-workshop/step5.html)
 
-### Shorten the Critical Rendering Path length
-
-- Step 6: Async/Defer JavaScript
-- Step 7: Code optimizations 
-- Step 8: Service workers
+- Other
+  - Service workers
+  - Content Delivery Network (CDN)
+  - Code optimizations
