@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+	<html class="sl-root base export loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>JSConfUY 2016 - Performance Testing and Optimization: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+		<!-- User CSS -->
+		<style id="user-css-output" type="text/css">
+			.reveal a,
+.reveal a:link,
+.reveal a:visited {
+  color: #c5473d;
+}
+.reveal a:hover {
+  color: #F87A70 !important;
+}
+
+		</style>
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="be099b42a762cef436427a2fe0d91f60" class="has-dark-background" data-background-color="#c5473d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 107px; height: auto;" data-block-id="f727aa448aea739060d39212a8d05823"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: right;" data-has-custom-html="">
+<h1><span>PERFORMANCE TESTING AND OPTIMIZATION</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 92px; top: 447px; height: auto;" data-block-id="3a23fda68930a1766c2bdb7f860039ae"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" style="z-index: 12; color: rgb(255, 255, 255); text-align: right; background-color: rgba(0, 0, 0, 0);">
+<h2>Diego Cardozo</h2>
+
+<p>Sr. Web Performance Engineer, NetSuite</p>
+
+<p>JSConfUY 2016</p>
+
+<p>@diecard</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 325.8px; height: 543px; left: 12px; top: 45px;" data-block-id="6381d3e60ebd74256cde3f81deaf6ae8"><div class="sl-block-content" style="z-index: 13;" data-inline-svg="false" href=""><img data-natural-width="300" data-natural-height="500" data-src="jsconf16/2469189-Logo_JSConf.svg"></div></div></section><section class="has-dark-background" data-background-color="#c5473d" data-id="fd0b41df016a3933e073989cb2403f08"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="93379f9a86d7cd181fa5d58503fbd66e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<h2><span>The best part about studying performance is how much you learn about technology in general</span></h2>
+</div></div>
+
+</section><section class="has-dark-background" data-background-color="#c5473d" data-id="ef124bd3519a4f74e683d29d435d39d7">
+
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 43px; height: auto;" data-block-id="42b219f9ca3446eb2ded5b6995fdd608"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<h1><span>Disclaimer</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 179px; height: auto;" data-block-id="21eef59a1414c2b971e8099777c59cc1"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<ul>
+	<li>
+	<h2>Performance === Speed</h2>
+	</li>
+	<li class="fragment" data-fragment-index="0">
+	<h2>Load</h2>
+	</li>
+	<li class="fragment" data-fragment-index="1">
+	<h2>Stress</h2>
+	</li>
+	<li class="fragment" data-fragment-index="2">
+	<h2>Capacity</h2>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 548px; height: auto;" data-block-id="96410d5de771e2754130560ad680fbda"><div class="sl-block-content fragment" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 13; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="" data-fragment-index="3">
+<h3>In other words, this workshop is about making the web fast</h3>
+</div></div></section><section data-id="c19c81cba5becddb5ff361643b2758e1" class="has-light-background" data-background-color="#ffffff"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 6px; height: auto;" data-block-id="104ad8f3d44cbcdb315cf6b676131e1f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 11;">
+<h1>Measure</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 589px; height: auto;" data-block-id="14e41b1b0806ac717c545e371b81572e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 12;">
+<h1>Optimize</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 313px; height: auto;" data-block-id="dd1072e82e68d33ace94110d6c471333"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 13;" dir="ui">
+<h2>Performance</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="21350e41f9325b1c0ba2ce3d2b7d452b" style="min-width: 30px; min-height: 30px; width: 563px; height: 563px; left: 199px; top: 68px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="900" data-natural-height="900" data-src="jsconf16/2469298-2000px-Shuffle_icinv.svg.png"></div></div></section><section data-id="d10a68a8dcc7000cde4e3374c488bea7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 42px; height: auto;" data-block-id="2175faab601c37d7438af6d11f8c5ca4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 11;">
+<h1>Measure</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="bb164b1d94b8b1ac4ad370b8ea84e86f" style="height: auto; min-width: 30px; min-height: 30px; width: 620px; left: 180px; top: 176px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(37, 64, 100);">
+<ul>
+	<li>
+	<h2><a href="http://tools.pingdom.com/fpt/" target="_blank"><span style="font-size:1.0em">Pingdom</span></a></h2>
+	</li>
+	<li class="fragment" data-fragment-index="0">
+	<h2><a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">PageSpeed Insights</a></h2>
+	</li>
+	<li class="fragment" data-fragment-index="1">
+	<h2><a href="https://ngrok.com/" target="_blank">ngrok</a></h2>
+	</li>
+	<li class="fragment" data-fragment-index="2">
+	<h2><a href="http://webpagetest.org" target="_blank">WebPagetest</a></h2>
+	</li>
+	<li class="fragment" data-fragment-index="3">
+	<h2 style="color:rgb(37, 64, 100); text-align:left"><a href="https://www.sitespeed.io/" target="_blank">sitespeed.io</a></h2>
+	</li>
+	<li class="fragment" data-fragment-index="4">
+	<h2><a href="https://gtmetrix.com/" target="_blank">GTMetrix</a></h2>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="ebff9bea0b8ae8390e0d26d3e8856e15" style="min-width: 4px; min-height: 4px; width: 74.5px; height: 32.5px; left: 645px; top: 457px;"><div class="sl-block-content fragment" data-shape-type="arrow-left" data-shape-fill-color="rgb(197, 71, 61)" data-shape-stretch="true" style="z-index: 13;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 75 33"><polygon points="75,9.9 37.5,9.9 37.5,0 0,16.5 37.5,33 37.5,23.099999999999998 75,23.099999999999998 75,9.9" class="shape-element" fill="rgb(197, 71, 61)"></polygon></svg></div></div></section><section data-id="cea56709570e822f26e01b264b281b9c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 22px; height: auto;" data-block-id="e7a3bbad1df3ae434e2eec08dcb23272"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 11;">
+<h1>Optimize</h1>
+</div></div>
+
+<div class="sl-block" data-block-type="image" data-block-id="9185b439d521cd5bfe7fd7d0fc11bb88" style="min-width: 30px; min-height: 30px; width: 815px; height: 510.153px; left: 73px; top: 180px;"><div class="sl-block-content" style="z-index: 12; border: 6px solid rgb(37, 64, 100); border-radius: 13px;"><img data-natural-width="917" data-natural-height="574" data-src="jsconf16/2476214-Screen_cap_index.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0c5f5054f449a010b8615087832dcc11" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 81px; top: 121px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-has-custom-html="">
+<p><a href="http://www.diegocard.com/web-performance-workshop" target="_blank">www.diegocard.com/web-performance-workshop</a></p>
+</div></div></section><section data-id="b7331ad8f696379dd52d1061f4310341"><div class="sl-block" data-block-type="text" style="width: 800px; left: 140px; top: 35px; height: auto;" data-block-id="673d550434755faa705d29d70af2b62b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 11;">
+<h1>Resources</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 858px; left: 51px; top: 189px;" data-block-id="78e7d6a71cf22fee98f1e22b11a430e0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(37, 64, 100);">
+<ul>
+	<li>
+<a href="https://www.udacity.com/course/website-performance-optimization--ud884" target="_blank">Udacity/Google website performance optimization course</a><br>
+	<span style="font-size:0.7em">https://www.udacity.com/course/website-performance-optimization--ud884</span>
+</li>
+	<li>
+<a href="https://developers.google.com/web/fundamentals/performance" target="_blank">Google Web Fundamentals: performance</a><br>
+	<span style="font-size:0.7em">https://developers.google.com/web/fundamentals/performance</span>
+</li>
+	<li>
+<a href="https://developers.google.com/speed/docs/insights" target="_blank">PageSpeed Insights guide</a><br>
+	<span style="font-size:0.7em">https://developers.google.com/speed/docs/insights</span>
+</li>
+	<li>
+<a href="http://www.slideshare.net/dcslides/how-to-test-performance-and-not-die-trying" target="_blank">How to test performance and not die trying</a><br>
+	<span style="font-size:0.7em">http://www.slideshare.net/dcslides/how-to-test-performance-and-not-die-trying</span>
+</li>
+	<li>
+<a href="http://www.slideshare.net/dcslides/optimize-performance-and-not-die-trying" target="_blank">How to optimize performance and not die trying</a><br>
+	<span style="font-size:0.7em">http://www.slideshare.net/dcslides/optimize-performance-and-not-die-trying</span>
+</li>
+	<li>
+<a href="https://www.youtube.com/watch?v=4uQMl7mFB6g" target="_blank"><span>The ServiceWorker: The network layer is yours to own</span></a><br>
+	<span style="font-size:21px; line-height:27.3px">https://www.youtube.com/watch?v=4uQMl7mFB6g</span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="adb078fdaab77384a0357f2aa04ab71d" style="min-width: 4px; min-height: 4px; width: 93px; height: 93px; left: 230px; top: 27px;"><div class="sl-block-content" data-shape-type="symbol-camera" data-shape-fill-color="rgb(37, 64, 100)" data-shape-stretch="true" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(37, 64, 100)"><path d="M16 20c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4-2.209 0-4-1.791-4-4zM28 8l-3.289-6.643c-0.27-0.789-1.016-1.357-1.899-1.357h-5.492c-0.893 0-1.646 0.582-1.904 1.385l-3.412 6.615h-8.004c-2.209 0-4 1.791-4 4v20h32v-20c0-2.209-1.789-4-4-4zM6 16c-1.105 0-2-0.895-2-2s0.895-2 2-2 2 0.895 2 2-0.895 2-2 2zM20 28c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path></g></svg></div></div></section><section class="has-light-background" data-background-color="#ffffff" data-id="fc7de81e8df4cfce4ab086e80cf7f3e0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 6px; height: auto;" data-block-id="9c5c15858de781a14f5e8176e4e0ed1f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 11;">
+<h1>Measure</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 589px; height: auto;" data-block-id="41852aa91eee567b2f2d61308ead8597"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 12;">
+<h1>Optimize</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 313px; height: auto;" data-block-id="65f36e00d23e3ae5d31a4d1ab66ffac4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 13;" dir="ui">
+<h2>Performance</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 563px; height: 563px; left: 199px; top: 68px;" data-block-id="f51f5fff3a00fc040ac1f7c5f0cfd77e"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="900" data-natural-height="900" data-src="jsconf16/2469298-2000px-Shuffle_icinv.svg.png"></div></div></section><section data-id="cc741504af32108a368f6de2a030ae82"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="535e3c28509819ab2337149263167c5a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(37, 64, 100); z-index: 10;">
+<h1>Questions?</h1>
+
+<h2>diegocard@gmail.com</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 889px; left: 36px; top: 394px;" data-block-id="3b5877fda36819a51b0e3eeff22e3838"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(37, 64, 100);">
+<h3><a href="https://slides.com/diegocard/jsconf16" target="_blank">slides.com/diegocard/jsconf16</a></h3>
+
+<h3><a href="https://github.com/diegocard" target="_blank">github.com/diegocard</a></h3>
+
+<h3><a href="https://twitter.com/diecard" target="_blank">twitter.com/diecard</a></h3>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":664064,"slug":"jsconf16","title":"JSConfUY 2016 - Performance Testing and Optimization","description":"JSConfUY 2016","visibility":"all","published_at":"2016-04-13T05:25:03.243Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/5daf8bfdf01e1095c87d2780bed61061/thumb.jpg","view_count":11,"user":{"id":63754,"username":"diegocard","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/350edaf6de1a9a1beb1ac87dc1fc39de?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","beta_collaboration":false,"pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":3717,"present_controls":false,"present_upsizing":true,"present_notes":true},"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":null,"notes":{}}};
+			SLConfig.current_user = {
+				name: "",
+				username: "diegocard",
+				pro: true
+			};
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script>
+			// Make Slides speaker notes available in the reveal.js speaker view
+			if( SLConfig.deck.notes ) {
+				[].forEach.call( document.querySelectorAll( '.reveal .slides section' ), function( slide ) {
+
+					var value = SLConfig.deck.notes[ slide.getAttribute( 'data-id' ) ];
+					if( value && typeof value === 'string' ) {
+						slide.setAttribute( 'data-notes', value );
+					}
+
+				} );
+			}
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+				showNotes: SLConfig.deck.share_notes,
+				slideNumber: SLConfig.deck.slide_number,
+
+				autoSlide: SLConfig.deck.auto_slide_interval || 0,
+				autoSlideStoppable: true,
+
+				rolling_links: SLConfig.deck.rolling_links || true,
+				center: SLConfig.deck.center || false,
+				loop: SLConfig.deck.should_loop || false,
+				rtl: SLConfig.deck.rtl || false,
+
+				transition: SLConfig.deck.transition,
+				backgroundTransition: SLConfig.deck.background_transition,
+
+				maxScale: 2,
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
