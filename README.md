@@ -1,6 +1,6 @@
 # Web Performance Workshop
 
-Web Performance Workshop for [JSConf 2016](https://jsconf.uy). Link to workshop [here](https://jsconf.uy/schedule#performance-testing-and-optimization)
+Web Performance Workshop for [JSConf 2016](https://jsconf.uy). Link to workshop [here](https://jsconf.uy/schedule#performance-testing-and-optimization). Slides [here](http://www.diegocard.com/web-performance-workshop/slides/#/).
 
 ## Agenda
 
